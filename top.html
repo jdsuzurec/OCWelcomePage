@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>このページは閉じないで下さい</title>
+   
+  
+    <!-- Vendor CSS Files -->
+    <!-- <link href="../OC/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="../OC/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!-- <link href="../OC/assets/css/bootstrap.min.css" rel="stylesheet"> -->
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+ 
+    
+    <!-- main css -->
+    <link href="../OC/assets/css/top.css" rel="stylesheet">
+
+    <!-- modernizr -->
+    <script src="assets/js/modernizr.js"></script>
+
+    <!-- Lity -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css" />  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js"></script>
+
+    <!-- Adobe font -->
+    <script>
+        (function(d) {
+          var config = {
+            kitId: 'kvd4seg',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
+
+  </head>
+
+  <body>
+
+
+    <div class="count">
+      <div class="logo">
+        <h1>TOKYO DENKI</h1>
+        <h1>UNIVERSITY</h1>
+        <h3><span class="oc">OPEN CAMPUS</span></h3>
+        <h5>2021/06/20</h5>
+      </div>
+      <!-- <a id="createFile1" href="#" download="count.txt" class="btn-gradient-radius" onclick="count1()"><b>1</b>人で視聴する</a><br>
+      <a id="createFile2" href="#" download="count.txt" class="btn-gradient-radius" onclick="count2()"><b>2</b>人で視聴する</a> -->
+      <a id="createFile1" href="#" class="btn-gradient-radius" onclick="count1()"><b>1</b>人で視聴する</a><br>
+      <a id="createFile2" href="#" class="btn-gradient-radius" onclick="count2()"><b>2</b>人で視聴する</a>
+    </div>
+
+    <a id="output" href="#" class="download" onclick="output()"><i class="icofont-download"></i></a>
+
+    <a></a>
+
+    <script>
+      var date = [];
+      var numOfParticipant = [];
+      var record = [];
+      var i = 0;
+
+      function count1() {
+        date.push(Date());
+        numOfParticipant.push(1);
+        record.push(['\n' + i, date[i], numOfParticipant[i]]);
+        i++;
+        window.open("index.html","_blank");
+
+        // var text = "1";
+        // var blob = new Blob([text], { "type": "text/plain" });
+        // //IEの場合
+        // if (window.navigator.msSaveBlob) {
+        //   window.navigator.msSaveBlob(blob, "outFileFromWindows.txt");
+        //   //IE以外の場合
+        // } else {
+        //   document.getElementById("createFile1").href = window.URL.createObjectURL(blob);
+        // }
+        // location.href = "index.html";
+      }
+
+      function count2() {
+        date.push(Date());
+        numOfParticipant.push(2);
+        record.push(['\n' + i, date[i], numOfParticipant[i]]);
+        i++;
+        window.open("index.html","_blank");
+      }
+
+      function output(){
+        var blob = new Blob([record],{type:"text/csv"});
+        var link = document.getElementById("output");
+        var fileName = "count" + ".csv";
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      }
+   
+   </script>
+ </body>
+</html>
